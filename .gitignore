@@ -1,2 +1,5 @@
 .idea
 venv
+Booking_system/__pycache__/
+System/__pycache__/
+System/migrations/__pycache__/
