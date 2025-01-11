@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <form method="post" action="{% url 'book-room' %}">
+        {% csrf_token %}
+        <label for="room-number">Room number:</label>
+        <input type="text" id="room-number" name="room-number">
+        <br>
+        <label for="room-number">Start time:</label>
+        <input type="datetime-local" id="start-time" name="start-time">
+        <br>
+        <label for="room-number">End time:</label>
+        <input type="datetime-local" id="end-time" name="end-time">
+        <br>
+        <button type="submit">Book this room</button>
+    </form>
+{% endblock %}

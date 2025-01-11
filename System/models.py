@@ -10,7 +10,7 @@ class Room(models.Model):
     location = models.TextField()
 
     def __str__(self):
-        return f"Room{self.number} - {self.capacity}"
+        return f"Room #{self.number} - {self.capacity}"
 
     class Meta:
         verbose_name = "Room"
