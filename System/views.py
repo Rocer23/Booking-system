@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from System.models import Room, Booking
+from System.models import Room, Booking, Facility
 from django.http import HttpResponse
 
 
@@ -62,3 +62,8 @@ def booking_details(request, pk):
             "This booking doesn't exists",
             status=404
         )
+
+
+def facilities_list(request):
+    facilities = Facility.objects.all()
+    return render(request, 'booking/facilities_list.html', {"facilities": facilities})
