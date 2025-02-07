@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Your Booking Rooms</h2>
+    {% for booking in bookings %}
+    <div class="card">
+         <div class="card-header">
+             Booking ID: {{ booking.id }}
+         </div>
+         <div class="card-body">
+             <h5 class="card-title">Room: {{ booking.room }}</h5>
+             <ul class="nav nav-pills">
+                 <a href="{% url 'booking-details' booking.id %}" class="btn btn-info">View Details</a>
+             </ul> 
+         </div> 
+    </div>
+    <ul>
+        <li>
+            <a href="{% url 'index' %}" class="btn btn-secondary">Назад</a>
+        </li>
+    </ul>
+    {% endfor %}
+{% endblock %}

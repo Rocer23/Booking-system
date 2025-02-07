@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Список зручностей</h1>
+<div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+        {% for facility in facilities %}
+        <li>
+            <strong>{{ facility.name }}</strong>: {{ facility.descrption}}
+            <ul>
+                <li class="list-group-item">Доступні в кімнатах:</li>
+                <ul>
+                    {% for room in facility.rooms.all %}
+                        <li class="list-group-item">Room {{ room.number}}: {{ room.location}}</li>
+                    {% endfor %}
+                </ul>
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<a href="{% url 'index' %}" class="btn btn-secondary">Назад</a>
+{% endblock %}

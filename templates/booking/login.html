@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Вхід</h2>
+    <form method="post" class="form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Увійти</button>
+    </form>
+    <p>Нема аккаунту?
+        <a href="{% url 'register' %}">Зареєструватися</a>
+    </p>
+    <a href="{% url 'index' %}" class="btn btn-secondary">На головну</a>
+{% endblock %}

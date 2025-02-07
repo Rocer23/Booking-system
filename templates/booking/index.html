@@ -2,11 +2,28 @@
 {% block content %}
     {{ render_string }}
     {% if request.user.is_authenticated%}
-        <h1>Hello, Authenticated user!</h1>
+        <h1>Hello, {{user.username }}!</h1>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn">Logout</button>
+        </form>
     {% else %}
-        <h1>Hello, Unauthenticated user!</h1>
+        <h1>Hello, Unauthenticated user! <a href="{% url 'login' %}">Увійти</a> | <a href="{% url 'register' %}">Реєстрація</a></h1>
     {% endif %}
-    <a href="{% url 'rooms-list' %}">Go to rooms list</a>
-    <br>
-    <a href="{% url 'book-room' %}">Go to room booking</a>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" href="{% url 'rooms-list' %}">Rooms list</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'book-room' %}">Room booking</a>
+        </li>
+        <li>
+            <a class="nav-link" href="{% url 'facilities-list' %}">Facilities list</a>
+        </li>
+    </ul>
+
+    <hr>
+    <div class="Rooms">
+        <a href="{% url 'booking-list' %}" class="btn btn-light" >Заброновані кімнати</a>
+    </div>
 {% endblock %}
